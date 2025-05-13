@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Custo de Reunião</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --md-primary: #6750A4;
+      --md-on-primary: #ffffff;
+      --md-surface: #ffffff;
+      --md-on-surface: #1C1B1F;
+      --md-outline: #CAC4D0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #F4EFF4;
+      color: var(--md-on-surface);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+    }
+
+    .container {
+      background-color: var(--md-surface);
+      max-width: 480px;
+      width: 100%;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--md-primary);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.25rem;
+      border: 1px solid var(--md-outline);
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #F7F2FA;
+    }
+
+    button {
+      background-color: var(--md-primary);
+      color: var(--md-on-primary);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #5B42A1;
+    }
+
+    .resultado {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #EADDFF;
+      border-radius: 12px;
+    }
+
+    .resultado h2 {
+      margin-top: 0;
+      color: #381E72;
+    }
+
+    .reflexao ul {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0 0;
+    }
+
+    .reflexao li {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quanto custa sua reunião?</h1>
+    <p>Preencha os campos abaixo para calcular o custo estimado de uma reunião:</p>
+
+    <label for="participantes">Número de participantes</label>
+    <input type="number" id="participantes" min="1" placeholder="Ex: 5">
+
+    <label for="custoHora">Custo médio por hora por participante (R$)</label>
+    <input type="number" id="custoHora" min="0" placeholder="Ex: 100">
+
+    <label for="duracao">Duração da reunião (horas)</label>
+    <input type="number" id="duracao" min="0" step="0.5" placeholder="Ex: 1.5">
+
+    <button onclick="calcularCusto()">Calcular Custo</button>
+
+    <div class="resultado" id="resultado" style="display:none;">
+      <h2>Resultado</h2>
+      <p id="valorTotal"></p>
+
+      <div class="reflexao">
+        <h3>Reflita antes de confirmar:</h3>
+        <ul>
+          <li>Essa reunião retorna esse valor para a empresa?</li>
+          <li>Ela se paga no curto, médio ou longo prazo?</li>
+          <li>Poderia ser um vídeo gravado?</li>
+          <li>Um canal no Slack ou Teams resolveria?</li>
+          <li>Um documento colaborativo funcionaria melhor?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calcularCusto() {
+      const participantes = parseInt(document.getElementById('participantes').value);
+      const custoHora = parseFloat(document.getElementById('custoHora').value);
+      const duracao = parseFloat(document.getElementById('duracao').value);
+
+      if (participantes > 0 && custoHora > 0 && duracao > 0) {
+        const total = participantes * custoHora * duracao;
+        document.getElementById('valorTotal').innerText = `Essa reunião custará aproximadamente R$ ${total.toFixed(2).replace('.', ',')}`;
+        document.getElementById('resultado').style.display = 'block';
+      } else {
+        alert('Preencha todos os campos corretamente.');
+      }
+    }
+  </script>
+</body>
+</html>
