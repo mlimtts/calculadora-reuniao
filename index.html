@@ -7,90 +7,111 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --md-primary: #6750A4;
-      --md-on-primary: #ffffff;
-      --md-surface: #ffffff;
-      --md-on-surface: #1C1B1F;
-      --md-outline: #CAC4D0;
+      --primary: #0D47A1;
+      --on-primary: #ffffff;
+      --background: #f5f5f5;
+      --surface: #ffffff;
+      --on-surface: #1C1B1F;
+      --outline: #E0E0E0;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #F4EFF4;
-      color: var(--md-on-surface);
+      margin: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
       display: flex;
       justify-content: center;
       align-items: flex-start;
       padding: 2rem;
+      min-height: 100vh;
     }
 
     .container {
-      background-color: var(--md-surface);
-      max-width: 480px;
       width: 100%;
+      max-width: 480px;
+      background-color: var(--surface);
       padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px var(--shadow);
     }
 
     h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.75rem;
+      font-weight: 500;
       margin-bottom: 1rem;
-      color: var(--md-primary);
+      color: var(--primary);
+    }
+
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
 
     label {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.875rem;
       font-weight: 500;
+      margin-top: 1rem;
+      display: block;
+      font-size: 0.9rem;
     }
 
     input {
       width: 100%;
       padding: 0.75rem;
       margin-top: 0.25rem;
-      border: 1px solid var(--md-outline);
+      border: 1px solid var(--outline);
       border-radius: 8px;
+      background-color: #fafafa;
       font-size: 1rem;
-      background-color: #F7F2FA;
     }
 
     button {
-      background-color: var(--md-primary);
-      color: var(--md-on-primary);
+      margin-top: 2rem;
+      background-color: var(--primary);
+      color: var(--on-primary);
       border: none;
+      border-radius: 24px;
       padding: 0.75rem 1.5rem;
-      border-radius: 100px;
-      font-weight: 500;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 1.5rem;
       width: 100%;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #5B42A1;
+      background-color: #08306b;
     }
 
     .resultado {
       margin-top: 2rem;
       padding: 1.5rem;
-      background-color: #EADDFF;
+      background-color: #E3F2FD;
       border-radius: 12px;
     }
 
     .resultado h2 {
       margin-top: 0;
-      color: #381E72;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .reflexao {
+      margin-top: 1rem;
+    }
+
+    .reflexao h3 {
+      margin-bottom: 0.5rem;
     }
 
     .reflexao ul {
       padding-left: 1.2rem;
-      margin: 0.5rem 0 0;
+      margin: 0;
     }
 
     .reflexao li {
@@ -120,13 +141,13 @@
       <p id="valorTotal"></p>
 
       <div class="reflexao">
-        <h3>Reflita antes de confirmar:</h3>
+        <h3>Reflita antes de confirmar a reunião:</h3>
         <ul>
           <li>Essa reunião retorna esse valor para a empresa?</li>
           <li>Ela se paga no curto, médio ou longo prazo?</li>
-          <li>Poderia ser um vídeo gravado?</li>
-          <li>Um canal no Slack ou Teams resolveria?</li>
-          <li>Um documento colaborativo funcionaria melhor?</li>
+          <li>Ela poderia ser um vídeo gravado?</li>
+          <li>Poderia ser resolvida em um canal de Slack/Teams?</li>
+          <li>Um documento compartilhado seria mais eficiente?</li>
         </ul>
       </div>
     </div>
